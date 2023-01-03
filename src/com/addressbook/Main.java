@@ -98,6 +98,18 @@ public class Main {
         }
 
     }
+
+    public void uc4_deleteContact(){
+        System.out.println("Enter the name of contact you want to delete");
+        name=sc.next();
+        if(contacts.get(0).getFirstName().equalsIgnoreCase(name)){
+            contacts.remove(0);
+            System.out.println("Contact Deleted");
+        }
+        else{
+            System.out.println("Cannot find name...");
+        }
+    }
     public static void main(String[] args) {
         Scanner sc= new Scanner(System.in);
         System.out.println("Welcome to Address Book");
@@ -108,7 +120,7 @@ public class Main {
         System.out.println(contact);
         int loop=1;
         while(loop==1){
-            System.out.println("1.Add Contact\n2.Edit Contact\n3.Display\n4.Exit");
+            System.out.println("1.Add Contact\n2.Edit Contact\n3.Delete\n4.Display\n5.Exit");
             int op=sc.nextInt();
             switch (op){
                 case 1:
@@ -119,7 +131,15 @@ public class Main {
                     ab.uc3_editContact();
                     break;
                 case 3:
+                    if(contacts.size()>0){
+                        ab.uc4_deleteContact();
+                    }
+                    else{
+                        System.out.println("Contacts list is empty");
+                    }
+                    break;
                 case 4:
+                case 5:
                     loop=0;
                     break;
                 default:

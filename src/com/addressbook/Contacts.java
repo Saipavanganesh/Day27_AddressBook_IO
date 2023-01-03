@@ -11,6 +11,7 @@ public class Contacts {
     public String getAddress(){
         return  address;
     }
+    
     public String getCity(){
         return city;
     }
