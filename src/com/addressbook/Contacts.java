@@ -1,7 +1,8 @@
 package com.addressbook;
 
 public class Contacts {
-    private String firstName,lastName,address,city,state,zip,phoneNumber,email;
+    private String firstName, lastName, address, city, state, zip, phoneNumber, email;
+
     public String getFirstName(){
         return firstName;
     }
