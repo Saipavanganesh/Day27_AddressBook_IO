@@ -10,7 +10,14 @@ public class Main extends ContactOperations {
         Main ab=new Main();
         int loop = 1;
         while(loop == 1){
-            System.out.println("1.Add Contact\n2.Edit Contact\n3.Delete\n4.Display\n5.Check by City or State\n6.Dictionary for city or state\n7.Exit");
+            System.out.println("1.Add Contact\n" +
+                    "2.Edit Contact\n" +
+                    "3.Delete\n" +
+                    "4.Display\n" +
+                    "5.Check by City or State\n" +
+                    "6.Dictionary for city or state\n" +
+                    "7.Count for city or state\n" +
+                    "8.Exit");
             int op=sc.nextInt();
             switch (op){
                 case 1:
@@ -54,6 +61,15 @@ public class Main extends ContactOperations {
                     }
                     break;
                 case 7:
+                    System.out.println("Enter 1 for CityCount and 2 for StateCount");
+                    int countCityOrState = sc.nextInt();
+                    if(countCityOrState == 1){
+                        ab.uc10_cityCount();
+                    } else if (countCityOrState == 2) {
+                        ab.uc10_stateCount();
+                    }
+                    break;
+                case 8:
                     loop=0;
                     break;
                 default:

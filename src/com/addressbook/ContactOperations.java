@@ -143,4 +143,16 @@ public class ContactOperations {
         stateDictionary.put(state, statesList);
         stateDictionary.get(state).forEach(states -> System.out.println(states));
     }
+    public void uc10_cityCount(){
+        System.out.println("Enter city");
+        String city = sc.next();
+        long cityCount = contacts.stream().filter(checkCity -> checkCity.getCity().equalsIgnoreCase(city)).count();
+        System.out.println("Count of " + city +" is " + cityCount);
+    }
+    public void uc10_stateCount(){
+        System.out.println("Enter city");
+        String state = sc.next();
+        long stateCount = contacts.stream().filter(checkState -> checkState.getState().equalsIgnoreCase(state)).count();
+        System.out.println("Count of " + state +" is " + sc);
+    }
 }
