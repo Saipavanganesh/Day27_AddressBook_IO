@@ -1,6 +1,7 @@
 package com.addressbook;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -9,6 +10,8 @@ public class ContactOperations {
     static Contacts contact;
     String name;
     int count;
+    static HashMap<String, List<Contacts>> stateDictionary = new HashMap<>();
+    static HashMap<String, List<Contacts>> cityDictionary = new HashMap<>();
     Scanner sc= new Scanner(System.in);
     static ArrayList<Contacts> contacts = new ArrayList<Contacts>();
     public void uc1_createContact(){
@@ -60,35 +63,35 @@ public class ContactOperations {
                 switch(option){
                     case 1:
                         System.out.println("Change first name");
-                        contacts.get(0).setFirstName(sc.next());
+                        contacts.get(i).setFirstName(sc.next());
                         break;
                     case 2:
                         System.out.println("Change Last name");
-                        contacts.get(0).setLastName(sc.next());
+                        contacts.get(i).setLastName(sc.next());
                         break;
                     case 3:
                         System.out.println("Change Address name");
-                        contacts.get(0).setAddress(sc.next());
+                        contacts.get(i).setAddress(sc.next());
                         break;
                     case 4:
                         System.out.println("Change City name");
-                        contacts.get(0).setCity(sc.next());
+                        contacts.get(i).setCity(sc.next());
                         break;
                     case 5:
                         System.out.println("Change State name");
-                        contacts.get(0).setState(sc.next());
+                        contacts.get(i).setState(sc.next());
                         break;
                     case 6:
                         System.out.println("Change Zip");
-                        contacts.get(0).setZip(sc.next());
+                        contacts.get(i).setZip(sc.next());
                         break;
                     case 7:
                         System.out.println("Change Phone number");
-                        contacts.get(0).setPhoneNumber(sc.next());
+                        contacts.get(i).setPhoneNumber(sc.next());
                         break;
                     case 8:
                         System.out.println("Change Email ID");
-                        contacts.get(0).setEmail(sc.next());
+                        contacts.get(i).setEmail(sc.next());
                         break;
                     default:
                         System.out.println("Select correct option");
@@ -118,16 +121,26 @@ public class ContactOperations {
             }
         }
     }
-    public void uc8_checkByCity(){
-        System.out.println("Enter the name of city ");
-        String city=sc.next();
+    public List<Contacts> uc8_checkByCity(String city){
         List<Contacts> checkByCity = contacts.stream().filter(checkCity -> checkCity.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
-        checkByCity.forEach(checkCity -> System.out.println(checkCity));
+        return checkByCity;
     }
-    public void uc8_checkByState(){
-        System.out.println("Enter the name of state ");
-        String state=sc.next();
+    public List<Contacts> uc8_checkByState(String state){
         List<Contacts> checkByState = contacts.stream().filter(checkState -> checkState.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
-        checkByState.forEach(checkState -> System.out.println(checkState));
+        return checkByState;
+    }
+    public void uc9_cityDictionary(){
+        System.out.println("Enter city");
+        String city = sc.next();
+        List<Contacts> cityList = uc8_checkByState(city);
+        stateDictionary.put(city, cityList);
+        stateDictionary.get(city).forEach(cities -> System.out.println(cities));
+    }
+    public void uc9_stateDictionary(){
+        System.out.println("Enter state");
+        String state = sc.next();
+        List<Contacts> statesList = uc8_checkByState(state);
+        stateDictionary.put(state, statesList);
+        stateDictionary.get(state).forEach(states -> System.out.println(states));
     }
 }
