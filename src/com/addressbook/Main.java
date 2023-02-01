@@ -17,7 +17,7 @@ public class Main extends ContactOperations {
                     "5.Check by City or State\n" +
                     "6.Dictionary for city or state\n" +
                     "7.Count for city or state\n" +
-                    "8.Sort by Name\n" +
+                    "8.Sort the list\n" +
                     "9.Exit");
             int op=sc.nextInt();
             switch (op){
@@ -71,7 +71,30 @@ public class Main extends ContactOperations {
                     }
                     break;
                 case 8:
-                    ab.uc11_sortByName();
+                    System.out.println("Select option\n" +
+                            "1.By Name\n" +
+                            "2.By City\n" +
+                            "3.By State\n" +
+                            "4.By ZipCode");
+                    int sortOption = sc.nextInt();
+                    switch (sortOption){
+                        case 1:
+                            ab.uc11_sortByName();
+                            break;
+                        case 2:
+                            ab.uc12_sortByCity();
+                            break;
+                        case 3:
+                            ab.uc12_sortByState();
+                            break;
+                        case 4:
+                            ab.uc12_sortByZip();
+                            break;
+                        default:
+                            System.out.println("Enter correct option");
+                            break;
+                    }
+
                 case 9:
                     loop=0;
                     break;
