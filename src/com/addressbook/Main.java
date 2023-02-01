@@ -1,9 +1,10 @@
 package com.addressbook;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class Main extends ContactOperations {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner sc= new Scanner(System.in);
         System.out.println("Welcome to Address Book");
         System.out.println("***********************");
@@ -18,7 +19,9 @@ public class Main extends ContactOperations {
                     "6.Dictionary for city or state\n" +
                     "7.Count for city or state\n" +
                     "8.Sort the list\n" +
-                    "9.Exit");
+                    "9.Write into File\n" +
+                    "10.Read from file\n" +
+                    "11.Exit");
             int op=sc.nextInt();
             switch (op){
                 case 1:
@@ -94,8 +97,21 @@ public class Main extends ContactOperations {
                             System.out.println("Enter correct option");
                             break;
                     }
-
                 case 9:
+                    FileWriter fileWriter = new FileWriter("D:\\JavaProgramsBridgelabz\\Day9_AddressBookSystem\\src\\com\\addressbook\\ContactsFromAddressbook.txt");
+                    for(Contacts cont : contacts){
+                        fileWriter.write(cont.toString());
+                        System.out.println(cont.toString());
+                        fileWriter.close();
+                    }
+                    break;
+                case 10:
+                    File file = new File("D:\\JavaProgramsBridgelabz\\Day9_AddressBookSystem\\src\\com\\addressbook\\ContactsFromAddressbook.txt");
+                    Scanner scanner = new Scanner(file);
+                    while(scanner.hasNextLine()){
+                        System.out.println(scanner.nextLine());
+                    }
+                case 11:
                     loop=0;
                     break;
                 default:

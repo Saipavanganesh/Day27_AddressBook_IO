@@ -1,5 +1,7 @@
 package com.addressbook;
 
+import java.io.File;
+
 public class Contacts {
     private String firstName, lastName, address, city, state, zip, phoneNumber, email;
 
@@ -76,4 +78,5 @@ public class Contacts {
                 +"\nZip Code:"+zip+"\nPhone Number:"+phoneNumber+"\nEmail:"+email;
         return display;
     }
+
 }
