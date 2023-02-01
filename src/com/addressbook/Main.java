@@ -17,7 +17,8 @@ public class Main extends ContactOperations {
                     "5.Check by City or State\n" +
                     "6.Dictionary for city or state\n" +
                     "7.Count for city or state\n" +
-                    "8.Exit");
+                    "8.Sort by Name\n" +
+                    "9.Exit");
             int op=sc.nextInt();
             switch (op){
                 case 1:
@@ -70,6 +71,8 @@ public class Main extends ContactOperations {
                     }
                     break;
                 case 8:
+                    ab.uc11_sortByName();
+                case 9:
                     loop=0;
                     break;
                 default:

@@ -1,9 +1,6 @@
 package com.addressbook;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ContactOperations {
@@ -154,5 +151,10 @@ public class ContactOperations {
         String state = sc.next();
         long stateCount = contacts.stream().filter(checkState -> checkState.getState().equalsIgnoreCase(state)).count();
         System.out.println("Count of " + state +" is " + sc);
+    }
+    public void uc11_sortByName(){
+        List<Contacts> sortedNameList = contacts.stream().sorted(Comparator.comparing(Contacts::getFirstName)).collect(Collectors.toList());
+        sortedNameList.forEach(x -> System.out.println(x));
+        System.out.println();
     }
 }
